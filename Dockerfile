@@ -10,6 +10,7 @@ ENV TERM=xterm
 USER root
 #ADD ./brandeis-services.tgz /var/lib/tomcat7/webapps
 ADD ./opennlp-web-service#2.0.0.war /var/lib/tomcat7/webapps/opennlp-web-service#2.0.0.war
+ADD ./stanfordnlp-web-service#2.0.1.war /var/lib/tomcat7/webapps/stanfordnlp-web-service#2.0.1.war
 ADD ./startup.sh /usr/bin/startup
 ADD ./tail-log.sh /usr/bin/taillog
 ADD ./waitforlog.sh /usr/bin/waitforlog
