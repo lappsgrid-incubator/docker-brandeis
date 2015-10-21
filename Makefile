@@ -1,8 +1,13 @@
+SERVER=http://www.anc.org/downloads/docker
+ARCHIVE=brandeis-services.tgz
+IMAGE=lappsgrid/brandeis
+
 brandeis:
-	/usr/local/bin/docker build -t lappsgrid/brandeis .
+	if [ ! -e $(ARCHIVE) ] ; then wget $(SERVER)/$(ARCHIVE) ; fi
+	/usr/local/bin/docker build -t $(IMAGE) .
 
 push:
-	/usr/local/bin/docker push lappsgrid/brandeis
+	/usr/local/bin/docker push $(IMAGE)
 	
 help:
 	@echo
