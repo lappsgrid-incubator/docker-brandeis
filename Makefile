@@ -1,17 +1,29 @@
-SERVER=http://www.anc.org/downloads/docker
-ARCHIVE=brandeis-services.tgz
+#SERVER=http://www.anc.org/downloads/docker
+SERVER=http://www.cs.brandeis.edu/~marc/lapps/services
+OPENNLP=opennlp-web-service%232.0.0.war
+STANFORD=stanfordnlp-web-service%232.0.1-SNAPSHOT.war
+DOCKER=/usr/local/bin/docker
+
 IMAGE=lappsgrid/brandeis
 
-brandeis:
-	if [ ! -e $(ARCHIVE) ] ; then wget $(SERVER)/$(ARCHIVE) ; fi
-	/usr/local/bin/docker build -t $(IMAGE) .
+brandeis: update
+	$(DOCKER) build -t $(IMAGE) .
+
+update:
+	./update.sh $(SERVER) $(OPENNLP) $(STANFORD)
 
 push:
-	/usr/local/bin/docker push $(IMAGE)
+	$(DOCKER) push $(IMAGE)
+
+tag:
+	if [ -n "$(TAG)" ] ; then $(DOCKER) tag $(IMAGE) $(IMAGE):$(TAG) ; fi
 	
 help:
 	@echo
 	@echo "GOALS"
-	@echo "brandeis - builds the Brabdeis tomcat server"
+	@echo "brandeis - builds the Brandeis tomcat server"
 	@echo "push     - uploads the image to hub.docker.com"
+	@echo "tag      - tags the lastest image on hub.docker.com"
+	@echo "           The tag to use must be specified as a"
+	@echo "           parameter. I.E. make tag TAG=demo"
 	@echo
