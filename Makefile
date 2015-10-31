@@ -1,7 +1,8 @@
 #SERVER=http://www.anc.org/downloads/docker
 SERVER=http://www.cs.brandeis.edu/~marc/lapps/services
-OPENNLP=opennlp-web-service%232.0.0.war
-STANFORD=stanfordnlp-web-service%232.0.1-SNAPSHOT.war
+OPENNLP=opennlp-web-service%232.0.1.war
+#STANFORD=stanfordnlp-web-service%232.0.1-SNAPSHOT.war
+STANFORD=stanfordnlp-web-service%232.0.1.war
 DOCKER=/usr/local/bin/docker
 
 IMAGE=lappsgrid/brandeis
