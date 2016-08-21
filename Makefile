@@ -3,7 +3,7 @@ SERVER=http://www.cs.brandeis.edu/~marc/lapps/services
 OPENNLP=opennlp-web-service%232.0.1.war
 #STANFORD=stanfordnlp-web-service%232.0.1-SNAPSHOT.war
 STANFORD=stanfordnlp-web-service%232.0.1.war
-DOCKER=/usr/local/bin/docker
+DOCKER=/usr/bin/docker
 
 IMAGE=lappsgrid/brandeis
 
@@ -17,7 +17,7 @@ push:
 	$(DOCKER) push $(IMAGE)
 
 tag:
-	if [ -n "$(TAG)" ] ; then $(DOCKER) tag $(IMAGE) $(IMAGE):$(TAG) ; fi
+	if [ -n "$(TAG)" ] ; then $(DOCKER) tag $(IMAGE) $(IMAGE):$(TAG) ; $(DOCKER) push $(IMAGE):$(TAG) fi
 	
 help:
 	@echo
