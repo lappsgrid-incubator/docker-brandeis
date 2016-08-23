@@ -1,1 +1,1 @@
-JAVA_OPTS="-Xmx3G -Djava.awt.headless=true"
+JAVA_OPTS="-Xmx16G -Djava.awt.headless=true"
